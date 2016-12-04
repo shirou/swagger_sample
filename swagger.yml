@@ -1,0 +1,44 @@
+swagger: '2.0'
+info:
+  title: swaggertest
+  description: swaggertest
+  version: "0.0.1"
+host: localhost:8000
+schemes:
+  - http
+basePath: /
+produces:
+  - application/json
+paths:
+  '/search':
+    post:
+      summary: test
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: user_id
+          type: array
+          items:
+            type: integer
+            format: uint64
+          in: formData
+          description: array of user id
+      responses:
+        200:
+          schema:
+            $ref: '#/definitions/User'
+        default:
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  User:
+    type: object
+    properties:
+      name:
+        type: string
+        description: name
+  Error:
+    type: object
+    properties:
+      message:
+        type: string
