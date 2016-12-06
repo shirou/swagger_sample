@@ -11,18 +11,17 @@ produces:
   - application/json
 paths:
   '/search':
-    post:
-      summary: test
+    get:
+      summary: get user information
       consumes:
         - application/x-www-form-urlencoded
+      tags:
+        - user
       parameters:
         - name: user_id
-          type: array
-          items:
-            type: integer
-            format: uint64
+          type: integer
           in: formData
-          description: array of user id
+          description: user id
       responses:
         200:
           schema:
@@ -33,7 +32,12 @@ paths:
 definitions:
   User:
     type: object
+    required:
+      - user_id
     properties:
+      user_id:
+        type: integer
+        description: user id
       name:
         type: string
         description: name
