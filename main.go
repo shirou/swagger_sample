@@ -18,6 +18,7 @@ func main() {
 		UserID: swag.Int64(10),
 	}
 
+	// なんかruntime.DefaultTimeoutをちゃんと使ってくれてないので明示的に指定
 	resp, err := apiclient.Default.User.GetSearch(p.WithTimeout(10 * time.Second))
 	if err != nil {
 		log.Fatal(err)
